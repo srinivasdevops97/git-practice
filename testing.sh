@@ -1,9 +1,9 @@
 #!/bin/bash
 
-USERID=$(id -u)
+USERID= $(id -u)
 #echo "user id is:$USERID"
 
-if [ $USER0ID -ne 0 ]
+if [ $USERID -ne 0 ]
 then
     echo "Please run the script with root privilages"
     exit 1
