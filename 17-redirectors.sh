@@ -15,7 +15,7 @@ Y="\e[33m"
 CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo -e "$R Please run the script with root privilages $N" | tee  &>>$LOG_FILE
+        echo -e "$R Please run the script with root privilages $N" | tee -a $LOG_FILE
         exit 1
     fi
 }
@@ -23,10 +23,10 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is.. $R FAILED $N"  &>>$LOG_FILE | tee  &>>$LOG_FILE
+        echo -e "$2 is.. $R FAILED $N"  &>>$LOG_FILE | tee -a  $LOG_FILE
         exit 1
     else
-        echo -e "$2 is.. $G SUCCESS $N"  &>>$LOG_FILE | tee  &>>$LOG_FILE
+        echo -e "$2 is.. $G SUCCESS $N"  &>>$LOG_FILE | tee -a $LOG_FILE
     fi
 }
 
@@ -35,7 +35,7 @@ USAGE(){
     exit 1
 }
 
-echo "Script started executing at $(date)" | tee  &>>$LOG_FILE
+echo "Script started executing at $(date)" | tee -a $LOG_FILE
 CHECK_ROOT
 
 if [ $# -ne 0 ]
@@ -49,10 +49,10 @@ do
     dnf list installed $Package &>>$LOG_FILE
     if [ $? -ne 0 ]
     then
-    echo "$Package is not installed, going to install it" | tee  &>>$LOG_FILE
+    echo "$Package is not installed, going to install it" | tee -a $LOG_FILE
     dnf install $Package -y &>>$LOG_FILE
     VALIDATE $? "Installing $Package"
     else
-    echo -e "$Package is already $Y installed, nothing to do $N" | tee  &>>$LOG_FILE
+    echo -e "$Package is already $Y installed, nothing to do $N" | tee -a $LOG_FILE
     fi
 done
