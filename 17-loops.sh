@@ -23,8 +23,8 @@ VALIDATE(){
     fi
 }
 
-
 CHECK_ROOT
+
 # sh 17-loops.sh git mysql postfix nginx
 for Package in $@
 do
@@ -36,4 +36,5 @@ do
         VALIDATE $? "Installing $package"
     else
         echo "$package is already installed, nothing to do"
-done
+    fi
+done 
