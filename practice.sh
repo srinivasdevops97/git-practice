@@ -13,7 +13,7 @@ dnf list installed git
 if [ $? -ne 0 ]
     then   
         echo "git is not installed, going to install it"
-        dnf install gittttt -y
+        dnf install git -y
         if [ $? -ne 0 ]
             then
                 echo "git installation is not successful, Please check"
@@ -28,7 +28,7 @@ dnf list installed mysql
 if [ $? -ne 0 ]
     then
         echo "mysql is not installed, going to install it"
-        dnf install mysqlllll -y  
+        dnf install mysql -y  
         if [ $? -ne 0 ]
             then
                 echo "mysql installation is not successful, Please check"
