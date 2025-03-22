@@ -9,7 +9,7 @@ then
     exit 1
 fi
 
-dnf list installed git
+dnf list installed gittttt
 if [ $? -ne 0 ]
     then   
         echo "git is not installed, going to install it"
@@ -24,10 +24,10 @@ if [ $? -ne 0 ]
         echo "git is already installed.. Nothing to do"
 fi
 
-dnf list installed mysql
+dnf list installed mysqllllll
 if [ $? -ne 0 ]
     then
-        echo "git is not installed, going to install it"
+        echo "mysql is not installed, going to install it"
         dnf install mysql -y  
         if [ $? -ne 0 ]
             then
