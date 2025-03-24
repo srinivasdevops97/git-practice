@@ -24,17 +24,19 @@ CHECK_ROOT(){
 VALIDATE (){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is $R Failed $N" &>>$LOG_FILE
+        echo -e "$2 is ... $R FAILED $N" &>>$LOG_FILE
         exit 1
     else
-        echo -e "$2 is $G Success $N" &>>$LOG_FILE
+        echo -e "$2 is.... $G SUCCESS $N" &>>$LOG_FILE
     fi
 }
 
 USAGE(){
-    echo -e "$R USAGE :: $N sudo practice.sh package1  package2..."
+    echo -e "$R USAGE:: $N sudo practice.sh package1  package2..."
     exit 1
 }
+
+echo "Script started executing at: $(date)" &>>$LOG_FILE
 
 CHECK_ROOT
 
