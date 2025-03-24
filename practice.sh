@@ -15,9 +15,9 @@ Y="\e[33m"
 
 CHECK_ROOT(){
         if [ $USERID -ne 0 ]
-            then
-                echo -e "$R Please run this script with root privileges $N" &>>$LOG_FILE
-                exit 1
+        then
+            echo -e "$R Please run this script with root privileges $N" &>>$LOG_FILE
+            exit 1
         fi
 }
 
@@ -31,8 +31,17 @@ VALIDATE (){
     fi
 }
 
+USAGE(){
+    echo -e "$R USAGE :: $N sudo practice.sh package1  package2..."
+    exit 1
+}
+
 CHECK_ROOT
 
+if [ $# -eq 0]
+then
+    USAGE
+fi
 
 for Package in $@
 do
@@ -43,6 +52,6 @@ do
             dnf install $package -y &>>$LOG_FILE
             VALIDATE $? "Installing $package" 
         else
-            echo "$package is already %Y installed, Nothing to do $N" &>>$LOG_FILE
+            echo -e "$package is already %Y installed, Nothing to do $N" &>>$LOG_FILE
     fi  
 done
