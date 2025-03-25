@@ -57,3 +57,4 @@ do
             echo -e "$package  is already $Y installed, Nothing to do $N" &>>$LOG_FILE
     fi  
 done
+#(video paused at46.10) continue from there...
