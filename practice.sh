@@ -45,7 +45,7 @@ then
     USAGE
 fi
 
-for package in $@
+for package in $@ # $@ refers to all arguments passed to it
 do
     dnf list installed $package &>>$LOG_FILE
     if [ $? -ne 0 ]
