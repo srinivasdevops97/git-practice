@@ -8,8 +8,11 @@ Y="\e[33m
 
 if [ -d $SOURCE_DIR ]
 then
-    echo -e "$SOURCE_DIR $G exists $N"
+    echo -e "$SOURCE_DIR $G exist $N"
 else
-    echo -e "$SOURCE_DIR $R does not exists $N"
+    echo -e "$SOURCE_DIR $R does not exist $N"
     exit 1
 fi
+
+FILES=$($SOURCE_DIR -name "*.log -mtime +14)
+echo "Files: $FILES"
