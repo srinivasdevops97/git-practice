@@ -8,8 +8,8 @@ Y="\e[33m
 
 if [ -d $SOURCE_DIR ]
 then
-    echo -e "$G $SOURCE_DIR $N exists"
+    echo -e "$SOURCE_DIR $G exists $N"
 else
-    echo -e "$R $SOURCE_DIR $N does not exists"
+    echo -e "$SOURCE_DIR $R does not exists $N"
     exit 1
 fi
