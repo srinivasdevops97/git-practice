@@ -21,4 +21,4 @@ while IFS= read -r line #IFS- internal field separator, empty means it will not 
 do
     echo "Deleting line: $line"
     rm -rf $line
-done
+done <<< $FILES
