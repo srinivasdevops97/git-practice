@@ -16,3 +16,9 @@ fi
 
 FILES=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 echo "files: $FILES"
+
+while IFS= read -r line #IFS- internal field separator, empty means it will not ignore while spaces, -r is for not to ignore special characters like /
+do
+    echo "Deleting line: $Line"
+    rm -rf $line
+done
