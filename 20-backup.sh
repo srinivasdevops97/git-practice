@@ -14,7 +14,7 @@ USAGE(){
 }
 #check the source and destionation are provided
 
-if [$# -lt 2 ]
+if [ $# -lt 2 ]
 then
     USAGE
 fi
