@@ -24,11 +24,11 @@ fi
 FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +14)
 echo "Files: $FILES"
 
-if [ ! -z "FILES" ] # true if FILES is empty, ! makes expression false
+if [ ! -n "FILES" ] # true if FILES is empty, ! makes expression false
 then
     echo -e "$G files are found $N"
     ZIP_FILE="DEST_DIR/app-logs-$TIMESTAMP.zip"
-    find $SOURCE_DIR -name "*.log" -mtime +14 | zip "ZIP_FILE" -@
+    find $SOURCE_DIR -name "*.log" -mtime +14 | zip "$ZIP_FILE" -@
 
     #check if the zip file if successfully created or not
     if [ -f "$ZIP_FILE" ]
@@ -38,12 +38,12 @@ then
         while IFS= read -r file #IFS- internal field separator, empty means it will not ignore while spaces, -r is for not to ignore special characters like /
         do
             echo -e "$R Deleting file: $file $N"
-            rm -rf $file
+            rm -rf "$file"
         done <<< $FILES
     else
         echo -e "$R zipping the files failed $N"
         exit 1
     fi
 else
-    echo -e "$R No files older than $DAYS $N "
+    echo -e "$R No files older than $DAYS $N"
 fi
