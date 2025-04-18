@@ -11,7 +11,7 @@ DAYS=${3:-14} #if $3 is empty, default is 14 days
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 
 USAGE(){
-    echo "USAGE:: 20-backup.sh <SOURCE> <destination> <days(optional)>"
+    echo -e "$Y USAGE:: 20-backup.sh <SOURCE> <destination> <days(optional)> $N"
 }
 #check the source and destionation are provided
 
@@ -21,29 +21,29 @@ then
     exit 1
 fi
 
-FILES=$(find {$SOURCE_DIR} -name "*.log" -mtime +14)
+FILES=$(find "$SOURCE_DIR" -name "*.log" -mtime +14)
 echo "Files: $FILES"
 
-if [ ! -z FILES ] # true if FILES is empty, ! makes expression false
+if [ ! -z "FILES" ] # true if FILES is empty, ! makes expression false
 then
-    echo "files are found"
+    echo -e "$G files are found $N"
     ZIP_FILE="DEST_DIR/app-logs-$TIMESTAMP.zip"
-    find ${SOURCE_DIR} -name "*.log" -mtime +14 | zip "ZIP_FILE" -@
+    find $SOURCE_DIR -name "*.log" -mtime +14 | zip "ZIP_FILE" -@
 
     #check if the zip file if successfully created or not
-    if [ -f $ZIP_FILE ]
+    if [ -f "$ZIP_FILE" ]
     then
-        echo "Successfully zipped files older than $DAYS"
+        echo -e "$G Successfully zipped files older than $DAYS $N"
         #remove the files after zipping
         while IFS= read -r file #IFS- internal field separator, empty means it will not ignore while spaces, -r is for not to ignore special characters like /
         do
-            echo "Deleting file: $file"
+            echo -e "$R Deleting file: $file $N"
             rm -rf $file
         done <<< $FILES
     else
-        echo "zipping the files failed"
+        echo -e "$R zipping the files failed $N"
         exit 1
     fi
 else
-    echo "No files older than $DAYS"
+    echo -e "$R No files older than $DAYS $N "
 fi
