@@ -40,6 +40,7 @@ echo "Files:\n$FILES"
 if [ -n "$FILES" ] #true if FILES is empty, ! make it expression false
 then
     echo "Files are found"
+    sudo dnf install zip -y
     ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     find ${SOURCE_DIR} -name "*.log" -mtime +$DAYS | zip $ZIP_FILE -@
 
