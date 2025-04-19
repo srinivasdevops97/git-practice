@@ -35,7 +35,7 @@ fi
 
 FILES=$(find ${SOURCE_DIR} -name "*.log" -mtime +$DAYS)
 
-echo "Files: $FILES"
+echo "Files:\n$FILES"
 
 if [ -n $FILES ] #true if FILES is empty, ! make it expression false
 then
